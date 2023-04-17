@@ -55,12 +55,8 @@ public class Sdk : MonoBehaviour, IChatManagerDelegate, IContactManagerDelegate
             context.initSDK = false;
             return;
         }
-        
-        if (InitEaseMobSDK() != 0)
-        {
-            context.initSDK = false;
-            return;
-        }
+
+        InitEaseMobSDK();
 
         context.initSDK = true;
     }
@@ -162,7 +158,7 @@ public class Sdk : MonoBehaviour, IChatManagerDelegate, IContactManagerDelegate
         }
     }
 
-    public int InitEaseMobSDK()
+    public void InitEaseMobSDK()
     {
         Options options = new Options(appKey)
         {
@@ -170,7 +166,7 @@ public class Sdk : MonoBehaviour, IChatManagerDelegate, IContactManagerDelegate
             UsingHttpsOnly = true,
             DebugMode = true
         };
-        return SDKClient.Instance.InitWithOptions(options);
+        SDKClient.Instance.InitWithOptions(options);
     }
 
     public void PrepareSDK()
