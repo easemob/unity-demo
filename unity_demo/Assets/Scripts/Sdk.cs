@@ -6,7 +6,7 @@ using System;
 
 public class Sdk : MonoBehaviour, IChatManagerDelegate, IContactManagerDelegate
 {
-    private readonly string configFile  = "sdk.text";
+    private readonly string configFile  = "sdk.txt";
 
     // Items in config file
     private readonly string appKeyStr   = "AppKey";
