@@ -37,6 +37,8 @@ public class Sdk : MonoBehaviour, IChatManagerDelegate, IContactManagerDelegate
     private bool inGuild = false;
     private bool inParty = false;
 
+    private string lastMsgId = "";
+
     private void Awake()
     {
         uiManager   = GameObject.Find("Canvas").GetComponent<UIManager>();
@@ -465,6 +467,8 @@ public class Sdk : MonoBehaviour, IChatManagerDelegate, IContactManagerDelegate
 
         Message msg = LoadLastMessage(contact);
 
+        if (null != msg && msg.MsgId.CompareTo(lastMsgId) == 0) return;
+
         if (null != msg)
         {
             TextBody tb = (TextBody)msg.Body;
@@ -572,6 +576,8 @@ public class Sdk : MonoBehaviour, IChatManagerDelegate, IContactManagerDelegate
 
         foreach (var it in messages)
         {
+            lastMsgId = it.MsgId;
+
             MessageType mtype = it.MessageType;
             MessageBodyType bType = it.Body.Type;
 
