@@ -69,14 +69,16 @@ public class ScrollView : MonoBehaviour
     {
         if (!Tools.IsSamePath(notice.dst_, myPath, myPath.Count)) return;
 
+        bool singleChat = (notice.dst_[0].CompareTo("Chat") == 0);
         long ts = long.Parse(notice.params_[3].ToString());
 
         AddDateSplitLine(ts);
         AddAMessage(notice);
 
         // Only new message trigger bubble change,
-        // for history message, not need to trigger bubble change.
-        if (context.StartTs < ts)
+        // for history Room message, not need to trigger bubble change.
+        // for offline single chage message, still need to trigger bubble change.
+        if (context.StartTs < ts || true == singleChat)
         {
             SendNoticeForBubbleChanged();
         }
