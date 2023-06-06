@@ -1,8 +1,8 @@
-AppKey=easemob-demo#unitytest
+AppKey=41117440#383391
 UseToken=false
-UserName=unity_demo
-Password=unity_demo
+UserName=unity1
+Password=1
 Token=xxx
-World=205360469180417
-Guild=205360500637703
-Party=205360528949251
+World=213157322752001
+Guild=213157308071937
+Party=213157291294721
