@@ -313,6 +313,11 @@ public class Sdk : MonoBehaviour, IChatManagerDelegate, IContactManagerDelegate
             },
             onError: (code, desc) => {
                 Debug.Log($"Failed to leave room {name}:{id}, code:{code}, desc:{desc}");
+
+                // Failed to leave room, Maybe not join at all.
+                if (name.CompareTo("World") == 0) inWorld = false;
+                else if (name.CompareTo("Guild") == 0) inGuild = false;
+                else if (name.CompareTo("Party") == 0) inParty = false;
             }
         ));
     }
